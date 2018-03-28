@@ -1,0 +1,121 @@
+How to open REPL for Pyboard:
+
+1. open terminal
+2. enter: "sudo screen /dev/ttyACM0"
+
+soft reboot -> ctrl + D
+
+
+External power sources:
+
+- micro usb input
+- battery (3.6V - 16V)
+- 
+
+_____________
+
+
+To get around this we need to go into *safe mode*.  This was described in
+the [safe mode tutorial](tut-reset), but we repeat the instructions here:
+
+1. Hold down the USR switch.
+2. While still holding down USR, press and release the RST switch.
+3. The LEDs will then cycle green to orange to green+orange and back again.
+4. Keep holding down USR until *only the orange LED is lit*, and then let
+   go of the USR switch.
+5. The orange LED should flash quickly 4 times, and then turn off.
+6. You are now in safe mode.
+
+
+_____________
+
+
+MyServo -> servo1.angle(-5) is 0 for me :)
+
+_____________
+
+stop while loop:
+
+sw = pyb.Switch()
+
+while not sw(): <<<<<<< this is important -> clicking the switch will end while loop
+
+
+
+
+
+
+
+_____________
+
+Using the accelorometer:
+
+
+accel = pyb.Accel()
+while True:
+    accel.y()pyb.delay(200)
+
+while True:
+...     accel.y()
+...     pyb.delay(200)
+
+exit while loops: ctrl+c
+
+
+Temperature device:
+
+- connect to either:
+	- ?
+
+
+
+LCD Display:
+
+- controlled by intellij
+- touch layer
+- code from github ( 
+
+
+
+_____________________________________________________-- check library function -- 
+
+dir(library)
+
+e.g. dir(math) -> lists all functions
+
+
+
+_____________________________________________________-- help() -- _________________________________________________________
+
+Welcome to MicroPython!
+
+For online help please visit http://micropython.org/help/.
+
+Quick overview of commands for the board:
+  pyb.info()    -- print some general information
+  pyb.delay(n)  -- wait for n milliseconds
+  pyb.millis()  -- get number of milliseconds since hard reset
+  pyb.Switch()  -- create a switch object
+                   Switch methods: (), callback(f)
+  pyb.LED(n)    -- create an LED object for LED n (n=1,2,3,4)
+                   LED methods: on(), off(), toggle(), intensity(<n>)
+  pyb.Pin(pin)  -- get a pin, eg pyb.Pin('X1')
+  pyb.Pin(pin, m, [p]) -- get a pin and configure it for IO mode m, pull mode p
+                   Pin methods: init(..), value([v]), high(), low()
+  pyb.ExtInt(pin, m, p, callback) -- create an external interrupt object
+  pyb.ADC(pin)  -- make an analog object from a pin
+                   ADC methods: read(), read_timed(buf, freq)
+  pyb.DAC(port) -- make a DAC object
+                   DAC methods: triangle(freq), write(n), write_timed(buf, freq)
+  pyb.RTC()     -- make an RTC object; methods: datetime([val])
+  pyb.rng()     -- get a 30-bit hardware random number
+  pyb.Servo(n)  -- create Servo object for servo n (n=1,2,3,4)
+                   Servo methods: calibration(..), angle([x, [t]]), speed([x, [t]])
+  pyb.Accel()   -- create an Accelerometer object
+                   Accelerometer methods: x(), y(), z(), tilt(), filtered_xyz()
+
+Pins are numbered X1-X12, X17-X22, Y1-Y12, or by their MCU name
+Pin IO modes are: pyb.Pin.IN, pyb.Pin.OUT_PP, pyb.Pin.OUT_OD
+Pin pull modes are: pyb.Pin.PULL_NONE, pyb.Pin.PULL_UP, pyb.Pin.PULL_DOWN
+Additional serial bus objects: pyb.I2C(n), pyb.SPI(n), pyb.UART(n)
+
