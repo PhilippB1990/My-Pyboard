@@ -1,0 +1,24 @@
+Basic features:
+
+
+---------------------------------------
+
+- Touch interface
+--Main menu - 2 options:
+--- Current temperature / Humidity
+---- Top - "Temperature (C°)"
+		xx C°
+---- Bot - "Humiditiy (%)
+---- 		xx %
+---- Back button
+
+--- Temperature / Humidity plotting
+---- Today plot
+---- Last week plot
+---- Back button
+
+
+----------------------------------------
+
+
+
