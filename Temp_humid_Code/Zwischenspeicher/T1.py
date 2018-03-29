@@ -37,29 +37,24 @@ def main_touch_interface():
     lcd.erase()
     exit = 0
 
-    fg = lcd.rgb(255, 128, 128)
+    fg = lcd.rgb(255, 0, 0)
     bg = lcd.rgb(0, 0, 0)
 
     #lcd.set_pos(10,10)
-    lcd.set_pen(fg, lcd.rgb(128,128,128))
-    lcd.rect(5, 5, 116, 150)    
-    lcd.set_pos(40,60)
-    lcd.write('EXIT')
+    lcd.set_pen(fg, lcd.rgb(255,255,0))
+    lcd.rect(5, 20, 116, 60)    
+    #lcd.set_pos(50,80)
+
+    lcd.set_pen(fg, lcd.rgb(0,128,0))
+    lcd.rect(5, 90, 116, 60)    
+    #lcd.set_pos(50,80)
+
 
 
     while exit == 0:
-        lcd.set_power(0)
+        #lcd.set_brightness(1)
         t,x,y = lcd.get_touch()
-        lcd.set_pos(15,150)
-        lcd.write(str(t))
-        lcd.set_pos(45,150)
-        lcd.write('   ')
-        lcd.set_pos(45,150)
-        lcd.write(str(x))
-        lcd.set_pos(75,150)
-        lcd.write('   ')
-        lcd.set_pos(75,150)
-        lcd.write(str(y))
+        pyb.delay(100)
 
         if (x > 10 and x < 110 and y > 10 and y < 150):
             exit = 1
@@ -70,14 +65,23 @@ def write_log():
     lcd.erase()
     
 
+#draw                                                                                                                                                                                
+
+
 
 while not sw():
+    lcd.set_font(1,0,0,1,0)
+    fg = lcd.rgb(255, 0, 0)
+    bg = lcd.rgb(0, 0, 0)
+    lcd.set_pen(fg, lcd.rgb(0,0,0))
     lcd.set_pos(60,70)
     lcd.write('NEW ROUTINE')
     pyb.delay(1500)
 
     lcd.erase()
     main_touch_interface()
+    pyb.delay(1500)
+    #lcd.set_brightness(31)
     
 lcd.erase()
 lcd.set_pos(60,70)
